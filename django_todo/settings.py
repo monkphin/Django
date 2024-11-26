@@ -37,6 +37,9 @@ if development:
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
+print(f"HEROKU_HOSTNAME: {os.environ.get('HEROKU_HOSTNAME')}")
+
+
 
 # Application definition
 
