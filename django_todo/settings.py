@@ -17,7 +17,8 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
-development = os.environ.get('DEVELOPMENT', False)    
+development = os.getenv('DEVELOPMENT', 'False') == 'True'
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,10 +36,14 @@ DEBUG = development
 if development:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME', '')]
+    ALLOWED_HOSTS = [
+        'db-django-todo-app-55d6deac5a5c.herokuapp.com',  # Explicitly add this
+        os.environ.get('HEROKU_HOSTNAME', ''),
+    ]
 
-print(f"HEROKU_HOSTNAME: {os.environ.get('HEROKU_HOSTNAME')}")
 
+print(f"DEBUG: DEVELOPMENT={development}")
+print(f"DEBUG: ALLOWED_HOSTS={ALLOWED_HOSTS}")
 
 
 # Application definition
