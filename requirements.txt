@@ -1,3 +1,4 @@
 dj_database_url==0.5.0
 Django==3.2.25
+gunicorn==23.0.0
 Requests==2.32.3
